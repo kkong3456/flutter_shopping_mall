@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_mall/models/model_auth.dart';
+import 'package:flutter_shopping_mall/models/model_item_provider.dart';
+import 'package:flutter_shopping_mall/models/model_query.dart';
 import 'package:flutter_shopping_mall/screens/screen_detail.dart';
 import 'package:flutter_shopping_mall/screens/screen_index.dart';
 import 'package:flutter_shopping_mall/screens/screen_login.dart';
@@ -11,7 +13,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); //shared preferences 초기화
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(); //firebase 초기화
   runApp(const MyApp());
 }
 
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
+        ChangeNotifierProvider(create: (_) => ItemProvider()),
+        ChangeNotifierProvider(create: (_) => SearchQuery()),
       ],
       child: MaterialApp(
         title: 'Flutter Shopping mall',

@@ -23,7 +23,7 @@ class _IndexScreenState extends State<IndexScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HOME'),
+        title: Text('Flutter Shopping Mall'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -36,6 +36,12 @@ class _IndexScreenState extends State<IndexScreen> {
           setState(() {
             _currentIndex = index;
           });
+          if (index == 1) {
+            setState(() {
+              _currentIndex = 0;
+            });
+            Navigator.pushNamed(context, '/search');
+          }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
