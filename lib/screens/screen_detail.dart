@@ -56,7 +56,9 @@ class DetailScreen extends StatelessWidget {
                   cart.isItemInCart(item)
                       ? Icon(Icons.check, color: Colors.blue)
                       : InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            cart.addItemToCart(authClient.user, item);
+                          },
                           child: Column(
                             children: [
                               Icon(Icons.add, color: Colors.blue),
