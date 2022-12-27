@@ -19,7 +19,7 @@ class Item {
     required this.registerDate,
   });
 
-  Item.fromSnapshow(DocumentSnapshot snapshot) {
+  Item.fromSnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     id = snapshot.id;
     title = data['title'];
@@ -28,5 +28,27 @@ class Item {
     imageUrl = data['imageUrl'];
     price = data['price'];
     registerDate = data['registerDate'];
+  }
+
+  Item.fromMap(Map<String, dynamic> data) {
+    id = data['id'];
+    title = data['title'];
+    description = data['description'];
+    brand = data['brand'];
+    imageUrl = data['imageUrl'];
+    price = data['price'];
+    registerDate = data['registerDate'];
+  }
+
+  Map<String, dynamic> toSnapShot() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'brand': brand,
+      'imageUrl': imageUrl,
+      'price': price,
+      'registerDate': registerDate,
+    };
   }
 }

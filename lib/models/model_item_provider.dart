@@ -14,7 +14,7 @@ class ItemProvider with ChangeNotifier {
   Future<void> fetchItems() async {
     items = await itemReference.get().then((QuerySnapshot results) {
       return results.docs.map((DocumentSnapshot document) {
-        return Item.fromSnapshow(document);
+        return Item.fromSnapshot(document);
       }).toList();
     });
     notifyListeners();
